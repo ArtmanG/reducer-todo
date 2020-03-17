@@ -39,9 +39,9 @@ export const todoReducer = (state, action) => {
                 todos: [
                     ...state.todos,
                     {
-                        item: action.item,
+                        item: action.payload,
                         completed: false,
-                        id: action.id
+                        id: Date.now()
                     }
                 ]
             };
@@ -50,7 +50,7 @@ export const todoReducer = (state, action) => {
             return {
                 ...state,
                 todos: state.todos.map(todo => {
-                    return todo.id === action.id ? {...todo, completed: !todo.completed} : todo;
+                    return todo.id === action.payload.id ? {...todo, completed: !todo.completed} : todo;
                 })
             }
 
@@ -58,7 +58,7 @@ export const todoReducer = (state, action) => {
             return {
                 ...state,
                 todos: state.todos.filters(todo => {
-                    return todo.completed === false;
+                    return todo.completed === true;
                 })
             }
 

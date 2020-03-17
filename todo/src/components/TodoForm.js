@@ -4,6 +4,7 @@ const TodoForm = (props) => {
     const [newTodo, setNewTodo] = useState('');
 
     const handleChange = e => {
+        e.preventDefault();
         setNewTodo(e.target.value)
     }
 
@@ -12,11 +13,9 @@ const TodoForm = (props) => {
         setNewTodo('')
     };
 
-    const addTodo = {
+    const ADD_TODO = {
         type: 'ADD_TODO',
-        item: newTodo,
-        completed: false,
-        id: Date.now()
+        payload: newTodo,
     }
 
     return (
@@ -31,7 +30,7 @@ const TodoForm = (props) => {
                 />
                 
                 <button
-                    onClick={() => props.dispatch(addTodo)}
+                    onClick={() => props.dispatch(ADD_TODO)}
                 >
                     Add New Task
                 </button>

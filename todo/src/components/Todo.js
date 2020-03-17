@@ -6,7 +6,7 @@ const Todo = (props) => {
             {props.state.todos.map(({item, completed, id}) => {
                 return (
                     <li
-                        style={{ textDecoration: props.completed ? 'line-through' : '' }}
+                        style={{ textDecoration: completed ? "line-through" : "" }}
 
                         onClick={() => {
                             props.dispatch({
