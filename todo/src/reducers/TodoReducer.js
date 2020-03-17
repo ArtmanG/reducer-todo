@@ -31,17 +31,17 @@ export const initialState = [
     }
 ];
 
-export const todoReducer = (state, action) => {
-    console.log(action);
+console.log(initialState);
 
+export const todoReducer = (state, action) => {
     switch(action.type){
         case 'ADD_TODO':
             return [
                 ...state,
                 {
-                item: action.payload,
+                item: action.item,
                 completed: false,
-                id: Date.now()
+                id: action.id
                 }
             ]
         default:
