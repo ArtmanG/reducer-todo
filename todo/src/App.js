@@ -12,7 +12,14 @@ function App() {
       <h1>Reducer Todo-List</h1>
       <Todo dispatch={dispatch} state={state} />
       <TodoForm dispatch={dispatch} />
-      <button>Delete Completed</button>
+
+      <button 
+        onClick={() => {
+          dispatch('CLEAR_COMPLETED')}
+        }
+      >
+        Delete Completed
+      </button>
       
     </div>
   );

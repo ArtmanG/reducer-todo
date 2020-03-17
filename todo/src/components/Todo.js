@@ -2,14 +2,26 @@ import React from 'react';
 
 const Todo = (props) => {
     return (
-        <div>
-            {props.state.map((state) => {
+        <ul>
+            {props.state.todos.map(({item, completed, id}) => {
                 return (
-                    <p key={state.id}>{state.item}</p>
+                    <li
+                        style={{ textDecoration: props.completed ? 'line-through' : '' }}
+
+                        onClick={() => {
+                            props.dispatch({
+                                type: 'TOGGLE_COMPLETED',
+                                payload: {item, completed, id}
+                            })
+                        }}
+                    >
+                        {item}
+                    </li>
                 )
             })}
-        </div>
+        </ul>
     )
 };
 
 export default Todo;
+

@@ -9,13 +9,13 @@ const TodoForm = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        props.dispatch(addTodo)
         setNewTodo('')
     };
 
     const addTodo = {
         type: 'ADD_TODO',
         item: newTodo,
+        completed: false,
         id: Date.now()
     }
 
@@ -26,13 +26,12 @@ const TodoForm = (props) => {
                     className='todo-input'
                     type='text'
                     name='newTodo'
-                    id='newTodoForm'
                     value={newTodo}
                     onChange={handleChange}
                 />
                 
                 <button
-                    onClick={handleSubmit}
+                    onClick={() => props.dispatch(addTodo)}
                 >
                     Add New Task
                 </button>
